@@ -1,0 +1,12 @@
+FROM nginx:1.16.1-alpine AS ui
+LABEL SASWAT <saswatpattnaik21@gmail.com>
+ENV VERSION="2"
+
+WORKDIR /etc/nginx
+COPY nginx.conf ./
+
+WORKDIR /var/www/html
+COPY index.html ./
+
+EXPOSE 8090
+ENTRYPOINT ["nginx", "-g", "daemon off;"]

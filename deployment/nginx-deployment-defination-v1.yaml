@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+   name: webserver-deployment
+   labels:
+      app: webapp
+      version: "1.0"
+spec:
+   selector: 
+      matchLabels:
+        app: webapp
+   template: 
+      metadata: 
+         name: nginx-webapp
+         labels:
+            app: webapp
+      spec:
+         containers:
+         - name: nginx-container
+           image: sumandinda/nginx:1.16.1
+           ports:
+              - containerPort: 8090
